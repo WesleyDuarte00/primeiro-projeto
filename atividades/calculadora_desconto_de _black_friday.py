@@ -1,9 +1,22 @@
-# Entrada de dados do usuário
-usuario = input("Digite o nome de usuário: ")
-token = int(input("Digite a chave de segurança (token inteiro): "))
+# Leitura do valor total das compras
+valor_original = float(input("Digite o valor total da compra (R$): "))
 
-# Verificação de segurança usando o operador lógico 'and'
-if usuario == "admin" and token == 9988:
-    print("Acesso concedido. Bem-vindo!")
+# Estrutura condicional para definir o percentual de desconto
+if valor_original <= 100.00:
+    percentual_desconto = 0
+elif valor_original <= 300.00:
+    percentual_desconto = 5
+elif valor_original <= 500.00:
+    percentual_desconto = 10
 else:
-    print("Dados de acesso inválidos")
+    percentual_desconto = 15
+
+# Cálculos
+valor_desconto = valor_original * (percentual_desconto / 100)
+total_a_pagar = valor_original - valor_desconto
+
+# Exibição dos resultados (formatados com 2 casas decimais)
+print(f"\n--- Resumo da Compra ---")
+print(f"Valor original: R$ {valor_original:.2f}")
+print(f"Desconto aplicado: {percentual_desconto}% (R$ {valor_desconto:.2f})")
+print(f"Total a pagar: R$ {total_a_pagar:.2f}")
